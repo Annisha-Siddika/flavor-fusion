@@ -16,7 +16,7 @@ const Banner = () => {
                 sequence={[
                     "Savor the flavor of our culinary creations.",
                     1000,
-                    "Where every bite is a tantalizing journey."
+                    "Food is not just fuel, it's a journey."
 ,
                     1000,
                     "Discover the art of taste in every dish."

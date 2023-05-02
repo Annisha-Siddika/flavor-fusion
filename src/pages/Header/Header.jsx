@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '/fusion-logos_transparent.png'
-import Banner from './Banner/Banner';
+import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         <div className="navbar py-0 px-8 h-3 bg-transparent absolute">
@@ -11,13 +11,9 @@ const Header = () => {
 
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a className=''>Home</a></li>
-        <li tabIndex={0}>
-          <a className="justify-between">
-            Blogs
-          </a>
-        </li>
-        <li><a>Chef's Recipe</a></li>
+        <Link to='/'>Home</Link>
+        <Link to='/'>Blog</Link>
+        <Link>Chef's Recipe</Link>
       </ul>
     </div>
     <img className='w-36 h-36' src={logo}  />
@@ -35,7 +31,7 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn bg-orange-300 text-blue-700 font-bold">Login</a>
+    <Link className="btn bg-orange-300 text-white font-bold" to='/login'>Login</Link>
   </div>
 </div>
     );

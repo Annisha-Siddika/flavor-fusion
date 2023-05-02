@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from '../pages/Header/Header';
-import Banner from '../pages/Header/Banner/Banner';
+import Footer from '../pages/Footer/Footer';
+import { Outlet } from 'react-router-dom';
 
 const Main = () => {
     return (
         <div>
             <Header></Header>
-            <Banner></Banner>
+            <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };
