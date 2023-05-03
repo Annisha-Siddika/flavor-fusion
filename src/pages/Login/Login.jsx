@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
     const [show, setShow] = useState(false)
     const [error, setError] = useState('');
-    const {signIn} = useContext(AuthContext);
+    const {signIn, handleGoogleSignIn, handleGithubSignIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -51,6 +51,10 @@ const Login = () => {
 
                 </div>
                     <div className='text-center bg-orange-300 text-white font-bold text-xl py-1 rounded my-3'><input type="submit" value='Login' /></div>
+                    <div>
+                        <div className='text-center  text-blue-600 font-semibold py-1 pl-3 border-2 border-blue-600 rounded my-3'><button onClick={handleGoogleSignIn} className='flex items-center gap-3'><FaGoogle></FaGoogle> Continue with Google</button></div>
+                        <div className='text-center   font-semibold py-1 pl-3 border-2 border-black rounded my-3'><button onClick={handleGithubSignIn} className='flex items-center gap-3'><FaGithub></FaGithub> Continue with Github</button></div>
+                    </div>
 
 
             </form>

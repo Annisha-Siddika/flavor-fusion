@@ -58,7 +58,7 @@ const Register = () => {
                     <label className='block font-semibold mb-2' htmlFor="confirm">Confirm Password</label>
                     <input className='p-2 mb-3 rounded w-5/6' type="password" name='confirm' id='confirm' placeholder='Your Password' required />
                     <label className='block font-semibold mb-2' htmlFor="photo">Photo URL:</label>
-                    <input className='p-2 mb-3 rounded w-5/6' type="text" name='photo' id='photo' placeholder='Enter Photo URL' required />
+                    <input className='p-2 mb-3 rounded w-5/6' type="text" name='photo' id='photo' placeholder='Enter Photo URL' />
 
                 </div>
                     <div className='text-center bg-orange-300 text-white font-bold text-xl py-1 rounded my-3'>

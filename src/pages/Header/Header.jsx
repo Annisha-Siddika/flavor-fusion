@@ -6,7 +6,8 @@ import { FaUserCircle } from 'react-icons/fa';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
     const userName = user?.displayName;
-    console.log(userName);
+    const userPic = user?.photoURL;
+    console.log(userName, userPic);
     const handleLogOut = ()=>{
         logOut()
         .then(result => {})
@@ -37,7 +38,9 @@ const Header = () => {
   </div>
   <div className="navbar-end">
     {user ? <>
-    <FaUserCircle title={userName} className='text-3xl mr-2 text-white '></FaUserCircle>
+      { user.photoURL ?
+        <img className='w-10 mr-2 rounded-full' src={userPic} title={userName} alt="" />:<FaUserCircle title={userName} className='text-3xl mr-2 text-white '></FaUserCircle>  
+    }
     <button className="btn bg-orange-300 text-white font-bold" onClick={handleLogOut}>Log Out</button>
     </> : <>
     <Link className="btn bg-orange-300 text-white font-bold mr-2" to='/login'>Login</Link>

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile} from 'firebase/auth';
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, GithubAuthProvider, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
 
@@ -9,6 +9,8 @@ const auth= getAuth(app);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const createUser = (email, password) =>{
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
@@ -16,6 +18,29 @@ const AuthProvider = ({children}) => {
     const signIn = (email, password) =>{
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
+    }
+    const handleGoogleSignIn = () =>{
+        signInWithPopup(auth, googleProvider)
+        .then(result =>{
+            const loggedInUser = result.user;
+            console.log(loggedInUser);
+            setUser(loggedInUser);
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    }
+
+    const handleGithubSignIn = () =>{
+        signInWithPopup(auth, githubProvider)
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser)
+            setUser(loggedUser)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
     const logOut = () =>{
         return signOut(auth)
@@ -41,6 +66,8 @@ const AuthProvider = ({children}) => {
         loading,
         createUser,
         signIn,
+        handleGoogleSignIn,
+        handleGithubSignIn,
         updateUserProfile,
         logOut
     };
