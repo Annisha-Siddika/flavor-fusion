@@ -36,7 +36,7 @@ const Login = () => {
             <div className='w-1/2 lg:w-1/4 mx-auto p-4 bg-slate-400 rounded'>
             
             <form onSubmit={handleSignIn}>
-                <div className='pb-2 h-64'>
+                <div className='form-control'>
                     <label className='block font-semibold mb-2' htmlFor="email">Email:</label>
                     <input className='p-2 mb-3 rounded w-5/6' type="email" name='email' id='email' placeholder='Your Email' required />
                     <label className='block font-semibold mb-2' htmlFor="password">Password</label>
@@ -44,17 +44,17 @@ const Login = () => {
                     <input className='grow p-2 mb-3 rounded' type={show ?  'text' : "password"} name='password' id='password' placeholder='Your Password' required />
                     <p className='pb-4 pl-6' onClick={()=>setShow(!show)}>
                         {
-                            show ? <span><FaEyeSlash></FaEyeSlash></span> : <span><FaEye></FaEye></span>
+                            show ? <span><FaEye></FaEye></span> : <span><FaEyeSlash></FaEyeSlash></span>
                         }
                         </p>
                     </div>
 
                 </div>
-                    <div className='text-center bg-orange-300 text-white font-bold text-xl py-1 rounded mb-3'><input type="submit" value='Login' /></div>
+                    <div className='text-center bg-orange-300 text-white font-bold text-xl py-1 rounded my-3'><input type="submit" value='Login' /></div>
 
 
             </form>
-            <p><small>New to Flavor fusion? <Link className='text-blue-900' to='/signup'> Create New Account</Link> </small></p>
+            <p><small>New to Flavor fusion? <Link className='text-blue-900 font-semibold' to='/register'> Create New Account</Link> </small></p>
             <p className='text-red-700 font-semibold'>{error}</p>
         </div>
         </div>

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '/fusion-logos_transparent.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
 const Header = () => {
+    const {user, logOut} = useContext(AuthContext);
+    const userName = user?.displayName;
+    console.log(userName);
+    const handleLogOut = ()=>{
+        logOut()
+        .then(result => {})
+        .catch(error =>{console.error(error)});
+    }
     return (
         <div className="navbar py-0 px-8 h-3 bg-transparent absolute">
   <div className="navbar-start">
@@ -19,19 +29,20 @@ const Header = () => {
     <img className='w-36 h-36' src={logo}  />
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 text-orange-300 font-semibold">
-      <li><a>Home</a></li>
-      <li tabIndex={0}>
-        <a>
-          Blogs
-          
-        </a>
-      </li>
-      <li><a>Chef's Recipe</a></li>
+    <ul className="menu menu-horizontal px-1 text-orange-300 font-semibold flex gap-4">
+    <Link to='/'>Home</Link>
+    <Link to='/'>Blog</Link>
+    <Link>Chef's Recipe</Link>
     </ul>
   </div>
   <div className="navbar-end">
-    <Link className="btn bg-orange-300 text-white font-bold" to='/login'>Login</Link>
+    {user ? <>
+    <FaUserCircle title={userName} className='text-3xl mr-2 text-white '></FaUserCircle>
+    <button className="btn bg-orange-300 text-white font-bold" onClick={handleLogOut}>Log Out</button>
+    </> : <>
+    <Link className="btn bg-orange-300 text-white font-bold mr-2" to='/login'>Login</Link>
+    <Link className="btn bg-orange-300 text-white font-bold" to='/register'>Register</Link>
+    </>}
   </div>
 </div>
     );
