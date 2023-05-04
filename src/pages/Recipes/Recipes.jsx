@@ -1,6 +1,7 @@
 import React from 'react';
-import { FaThumbsUp } from 'react-icons/fa';
+import { FaPagelines, FaThumbsUp } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import RecipeDetails from './RecipeDetails';
 
 const Recipes = () => {
     const recipe = useLoaderData();
@@ -21,7 +22,16 @@ const Recipes = () => {
                 </div>
                 
             </div>
-
+            <div className='bg-white mt-8'>
+            <div className='text-center py-12'><h2 className='text-3xl font-bold text-orange-600 flex justify-center pb-3'>Recipes <FaPagelines/></h2>
+            <p className='text-gray-600 text-lg'>Here are some Special & Delicious recipes of Chef {name}</p></div>
+                {
+                    recipes.map(rd => <RecipeDetails
+                        key={rd.id}
+                        rd={rd}
+                    ></RecipeDetails> )
+                }
+            </div>
         </div>
     );
 };
