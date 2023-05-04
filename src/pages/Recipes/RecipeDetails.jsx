@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
+import { Rating } from '@smastrom/react-rating';
 import 'react-toastify/dist/ReactToastify.css';
+import '@smastrom/react-rating/style.css'
 const RecipeDetails = ({ rd }) => {
     const [isFavorite, setIsFavorite] = useState(false);
 
@@ -20,7 +22,7 @@ const RecipeDetails = ({ rd }) => {
                 <p><span className='font-bold'>Ingredients: </span>{ingredients}</p>
                 <p className='my-4'><span className='font-bold'>Cooking Method: </span>{cooking_method}</p>
                 <div className='flex justify-center items-center gap-12 pb-12'>
-                    <p className='font-semibold text-slate-600'>Ratings: {rating}</p>
+                    <p className='font-semibold text-slate-600 flex'>Ratings: <Rating style={{maxWidth: 100}} value={rating} readOnly/></p>
                     <button  disabled={isFavorite} onClick={handleFavoriteClick} className='flex items-center gap-2 bg-orange-600 text-white py-2 px-4 rounded-lg font-bold'>{isFavorite ? 'Favorite' : 'Add to Favorites'} <FaHeart></FaHeart></button>
                     <ToastContainer />
                 </div>

@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import logo from '/fusion-logos_transparent.png'
-import { Link } from 'react-router-dom';
+
 import { AuthContext } from '../../providers/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
+import Link from './Link';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
     const userName = user?.displayName;
@@ -23,29 +24,26 @@ const Header = () => {
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <Link to='/'>Home</Link>
-        <Link to='/'>Blog</Link>
-        <Link>Chef's Recipe</Link>
+        <Link to='/blog'>Blog</Link>
       </ul>
     </div>
     <img className='w-36 h-36' src={logo}  />
   </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 text-orange-300 font-semibold flex gap-4">
-    <Link to='/'>Home</Link>
-    <Link to='/'>Blog</Link>
-    <Link>Chef's Recipe</Link>
-    </ul>
-  </div>
   <div className="navbar-end">
+  <ul className="menu menu-horizontal px-1 text-orange-500 font-bold text-xl flex gap-12 items-center">
+    <Link to='/'>Home</Link>
+    <Link to='/blog'>Blog</Link>
+    
     {user ? <>
       { user.photoURL ?
         <img className='w-10 mr-2 rounded-full' src={userPic} title={userName} alt="" />:<FaUserCircle title={userName} className='text-3xl mr-2 text-white '></FaUserCircle>  
     }
-    <button className="btn bg-orange-300 text-white font-bold" onClick={handleLogOut}>Log Out</button>
+    <button className="btn bg-orange-400 text-white font-bold" onClick={handleLogOut}>Log Out</button>
     </> : <>
-    <Link className="btn bg-orange-300 text-white font-bold mr-2" to='/login'>Login</Link>
-    <Link className="btn bg-orange-300 text-white font-bold" to='/register'>Register</Link>
+    <Link className="btn bg-orange-400 text-white font-bold mr-2" to='/login'>Login</Link>
+    <Link className="btn bg-orange-400 text-white font-bold" to='/register'>Register</Link>
     </>}
+    </ul>
   </div>
 </div>
     );

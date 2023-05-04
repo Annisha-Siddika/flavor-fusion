@@ -25,6 +25,7 @@ const AuthProvider = ({children}) => {
             const loggedInUser = result.user;
             console.log(loggedInUser);
             setUser(loggedInUser);
+            navigate(from, {replace: true})
         })
         .catch(error =>{
             console.log(error)
@@ -36,13 +37,15 @@ const AuthProvider = ({children}) => {
         .then(result =>{
             const loggedUser = result.user;
             console.log(loggedUser)
-            setUser(loggedUser)
+            setUser(loggedUser);
+            navigate(from, {replace: true})
         })
         .catch(error => {
             console.log(error)
         })
     }
     const logOut = () =>{
+        setLoading(true);
         return signOut(auth)
     }
     const updateUserProfile = (name, photo) => {

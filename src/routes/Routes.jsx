@@ -5,11 +5,14 @@ import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Recipes from '../pages/Recipes/Recipes';
+import PrivateRoutes from './PrivateRoutes';
+import ErrorPage from '../ErrorPage';
 
 const Routes = createBrowserRouter([
 {
     path: '/',
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
             path: '/',
@@ -25,8 +28,8 @@ const Routes = createBrowserRouter([
         },
         {
             path: 'recipes/:id',
-            element: <Recipes></Recipes>,
-            loader: ({params}) => fetch(`http://localhost:5000/recipes/${params.id}`)
+            element: <PrivateRoutes><Recipes></Recipes></PrivateRoutes>,
+            loader: ({params}) => fetch(`https://assignment-10-server-annisha-siddika.vercel.app/recipes/${params.id}`)
         }
     ]
 }
