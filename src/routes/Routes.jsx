@@ -4,6 +4,7 @@ import Main from '../layout/Main';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
+import Recipes from '../pages/Recipes/Recipes';
 
 const Routes = createBrowserRouter([
 {
@@ -21,9 +22,15 @@ const Routes = createBrowserRouter([
         {
             path: 'register',
             element: <Register></Register>
+        },
+        {
+            path: 'recipes/:id',
+            element: <Recipes></Recipes>,
+            loader: ({params}) => fetch(`http://localhost:5000/recipes/${params.id}`)
         }
     ]
 }
+
 ])
 
 export default Routes;
