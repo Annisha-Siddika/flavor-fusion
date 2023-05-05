@@ -1,12 +1,16 @@
 import React from 'react';
 import { FaThumbsUp } from 'react-icons/fa';
+import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 
 const ChefInfo = ({ chef }) => {
     const {id, name, photo_url, year_of_experience, num_recipes, likes } = chef;
     return (
         <div className="carousel-item flex gap-8 border  p-4 mb-36 bg-slate-700 ml-20 shadow-xl">
-            <img src={photo_url} className="rounded-box w-52 h-64"/>
+            <LazyLoad offset={1000}>
+                <img src={photo_url} className="rounded-box w-52 h-64"/>
+                </LazyLoad>
+            
             <div className='mr-8 text-white'>
             <h2 className='text-xl pt-8 pb-3 font-bold'>{name}</h2>
             <p className='pt-3'>Year of Experience: {year_of_experience}</p>
