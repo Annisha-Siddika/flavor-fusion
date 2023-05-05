@@ -6,7 +6,7 @@ import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 const Login = () => {
     const [show, setShow] = useState(false)
     const [error, setError] = useState('');
-    const {signIn, handleGoogleSignIn, handleGithubSignIn} = useContext(AuthContext);
+    const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -29,6 +29,30 @@ const Login = () => {
             setError(error.message);
         })
 
+    }
+    const handleGoogleSignIn = ()=>{
+        googleSignIn()
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            navigate(from, {replace: true})
+        })
+        .catch(error =>{
+            console.log(error);
+            setError(error.message);
+        })
+    }
+    const handleGithubSignIn = ()=>{
+        githubSignIn()
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            navigate(from, {replace: true})
+        })
+        .catch(error =>{
+            console.log(error);
+            setError(error.message);
+        })
     }
     return (
         <div className='bg-slate-800 pt-24 h-screen'>

@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, GithubAuthProvider, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 import app from '../firebase/firebase.config';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export const AuthContext = createContext(null);
@@ -19,30 +20,13 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
-    const handleGoogleSignIn = () =>{
-        signInWithPopup(auth, googleProvider)
-        .then(result =>{
-            const loggedInUser = result.user;
-            console.log(loggedInUser);
-            setUser(loggedInUser);
-            navigate(from, {replace: true})
-        })
-        .catch(error =>{
-            console.log(error)
-        })
+    const googleSignIn = () =>{
+        return signInWithPopup(auth, googleProvider);
+        
     }
 
-    const handleGithubSignIn = () =>{
-        signInWithPopup(auth, githubProvider)
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser)
-            setUser(loggedUser);
-            navigate(from, {replace: true})
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    const githubSignIn = () =>{
+        return signInWithPopup(auth, githubProvider);
     }
     const logOut = () =>{
         setLoading(true);
@@ -69,8 +53,8 @@ const AuthProvider = ({children}) => {
         loading,
         createUser,
         signIn,
-        handleGoogleSignIn,
-        handleGithubSignIn,
+        googleSignIn,
+        githubSignIn,
         updateUserProfile,
         logOut
     };
