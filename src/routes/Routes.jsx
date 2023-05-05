@@ -7,6 +7,7 @@ import Register from '../pages/Register/Register';
 import Recipes from '../pages/Recipes/Recipes';
 import PrivateRoutes from './PrivateRoutes';
 import ErrorPage from '../ErrorPage';
+import Blog from '../pages/Blog/Blog';
 
 const Routes = createBrowserRouter([
 {
@@ -30,6 +31,10 @@ const Routes = createBrowserRouter([
             path: 'recipes/:id',
             element: <PrivateRoutes><Recipes></Recipes></PrivateRoutes>,
             loader: ({params}) => fetch(`https://assignment-10-server-annisha-siddika.vercel.app/recipes/${params.id}`)
+        },
+        {
+            path: 'blog',
+            element: <Blog></Blog>
         }
     ]
 }

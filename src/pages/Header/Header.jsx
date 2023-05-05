@@ -31,8 +31,10 @@ const Header = () => {
   </div>
   <div className="navbar-end">
   <ul className="menu menu-horizontal px-1 text-orange-500 font-bold text-xl flex gap-12 items-center">
+    <div className='hidden lg:flex gap-12 items-center'>
     <Link to='/'>Home</Link>
     <Link to='/blog'>Blog</Link>
+    </div>
     
     {user ? <>
       { user.photoURL ?
