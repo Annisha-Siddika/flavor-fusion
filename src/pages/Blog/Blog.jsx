@@ -2,37 +2,58 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='mt-4 bg-slate-200 pb-20'>
-            <h1 className='text-xl font-bold text-center underline decoration-violet-800 decoration-2 underline-offset-4 mb-14 pt-12'>Questions and Answers</h1>
+        <div className='pt-4 bg-slate-600 pb-20'>
+            <h1 className='text-2xl text-orange-300 font-bold text-center underline decoration-orange-500 decoration-2 underline-offset-4 mb-14 pt-20'>Questions and Answers</h1>
             <div className='mx-24'>
-                <span className='text-lg font-semibold bg-violet-200 drop-shadow-md p-2 my-6 rounded-lg text-violet-900'>Q-1: When should you use context API?</span>
-                <div className='my-4 bg-pink-200 sm:mx-auto md:mx-0 rounded-lg p-4 bg-gradient-to-r from-pink-500 to-purple-500 hover:bg-gradient-to-l text-white'>The Context API is a feature in React that allows us to share data between components without the need to pass props down through multiple levels of the component tree. The Context API is a useful tool for managing global state in our React applications and should be used when we need to share data between components at different levels of the component tree or when we need a centralized state management solution.
+                <span className='text-lg font-semibold bg-red-200 drop-shadow-md p-2 my-6 rounded-lg text-orange-900'>Q-1: What is the differences between uncontrolled and controlled components?</span>
+                <div className='my-4 sm:mx-auto md:mx-0 rounded-lg p-4 bg-slate-700 text-white'>In React, a controlled component is a component that is controlled by React state, while an uncontrolled component is a component that maintains its own internal state.
+                    <br />
+                    A controlled component receives its current value and an update callback via props, and the parent component manages the state of the component. When the user interacts with the component, the parent component updates the state, which in turn updates the component's value.
+                    <br />
+                    An uncontrolled component, maintains its own internal state, and when the user interacts with the component, it updates its own state, which in turn updates the component's value.
 
                 </div>
                 <br />
-                <span className='text-lg font-semibold bg-violet-200 drop-shadow-md p-2 my-6 rounded-lg text-violet-900'>Q-2: What is a custom hook?</span>
-                <div className='my-4 bg-pink-200 sm:mx-auto md:mx-0 rounded-lg p-4 bg-gradient-to-r from-pink-500 to-purple-500 hover:bg-gradient-to-l text-white'>
-                    A custom hook is a JavaScript function in React that uses one or more built-in hooks to encapsulate a piece of reusable functionality. Custom hooks allow us to extract component logic into reusable functions, which can be shared across multiple components or even across multiple projects.
+                <span className='text-lg font-semibold bg-red-200 drop-shadow-md p-2 my-6 rounded-lg text-orange-900'>Q-2: How to validate React props using PropTypes</span>
+                <div className='my-4 sm:mx-auto md:mx-0 rounded-lg p-4 bg-slate-700 text-white'>
+                    To validate React props using PropTypes, you can use the prop-types library, which is commonly used in React applications. Here are the steps to use PropTypes:
                     <br />
-                    Custom hooks follow a naming convention of using the prefix "use" in their name, such as "useForm" or "useFetch". They are defined just like any other JavaScript function, but they must call at least one of the built-in hooks such as useState, useEffect, useContext, or useReducer.
-                    <br />
-                    For example, a custom hook could encapsulate the logic for fetching data from an API endpoint and returning the data to a component. The hook could use the built-in useEffect hook to handle the asynchronous fetch and the useState hook to manage the loading and error states. This custom hook can then be reused in multiple components throughout the application to handle API calls.
-                    <br />
-                    Custom hooks allow for cleaner and more reusable code by extracting component logic into separate functions that can be reused across components. They also promote code organization and can make testing components easier by isolating component logic.
+                    <ul className='list-disc pl-4 py-2'>
+                        <li>Install the prop-types library by running npm install prop-types in your project directory.</li>
+                        <li>Import PropTypes into your component file: import PropTypes from 'prop-types';</li>
+                        <li>Define the expected props and their data types in your component by creating a propTypes object.</li>
+                        <li>
+                            Pass the props to the component, and PropTypes will automatically check if the props are of the expected type. If a prop is not of the expected type, PropTypes will generate a warning in the console.
+                        </li>
+                    </ul>
+                    <p>
+                        PropTypes provide various data types to define expected types, including array, bool, func, number, object, string, symbol, and node, among others. You can also define custom validation rules using the PropTypes.shape() and PropTypes.instanceOf() methods. Proper use of PropTypes can help catch errors early on and make your code more robust.
+                    </p>
                 </div>
                 <br />
-                <span className='text-lg font-semibold bg-violet-200 drop-shadow-md p-2 my-6 rounded-lg text-violet-900'>Q-3: What is useRef?</span>
-                <div className='my-4 bg-pink-200 sm:mx-auto md:mx-0 rounded-lg p-4 bg-gradient-to-r from-pink-500 to-purple-500 hover:bg-gradient-to-l text-white'>
-                    useRef is a built-in hook in React that provides a way to create a mutable reference to a DOM element or a value that persists across component renders. useRef returns a JavaScript object with a current property that is initialized to the passed value or null if no value is provided.One common use case for useRef is to access and manipulate DOM elements directly.Another use case for useRef is to store and access previous values of a component's state. useRef is a useful tool in React for creating mutable references to DOM elements or values that persist across renders. It can be used to access and manipulate DOM elements directly or to store and access previous values of a component's state.
+                <span className='text-lg font-semibold bg-red-200 drop-shadow-md p-2 my-6 rounded-lg text-orange-900'>Q-3: Tell us the difference between nodejs and express js.</span>
+                <div className='my-4 sm:mx-auto md:mx-0 rounded-lg p-4 bg-slate-700 text-white'>
+                    Node.js and Express.js are both popular tools used in web development, but they serve different purposes.
+                    <br />
+                    <br />
+                    Node.js is a server-side JavaScript runtime environment that allows developers to build server-side applications using JavaScript. Node.js provides a set of built-in modules and APIs for performing I/O operations, networking, and other low-level tasks. Node.js is designed to be lightweight, fast, and scalable, and it can be used to build a wide range of applications, including web servers, real-time chat applications, and command-line tools.
+                    <br />
+                    <br />
+                    Express.js, on the other hand, is a web application framework built on top of Node.js. It provides a set of features and tools for building web applications, such as routing, middleware, and template rendering. Express.js simplifies the process of building web applications in Node.js by providing a higher-level abstraction layer and a set of commonly used features.
                 </div>
                 <br />
-                <span className='text-lg font-semibold bg-violet-200 drop-shadow-md p-2 my-6 rounded-lg text-violet-900'>Q-4: What is useMemo?</span>
-                <div className='my-4 bg-pink-200 sm:mx-auto md:mx-0 rounded-lg p-4 bg-gradient-to-r from-pink-500 to-purple-500 hover:bg-gradient-to-l text-white'>
-                    useMemo is a built-in hook in React that allows us to memoize the result of a function call and recompute it only when one of its dependencies changes. Memoization is a technique to optimize the performance of a function by caching its result and returning the cached result when called again with the same arguments.
-<br />
-                    useMemo takes two arguments: a function and an array of dependencies. The function is called every time the component is rendered, and the returned value is memoized if the dependencies have not changed since the last render. If any of the dependencies have changed, the function is called again to compute a new value, which is then memoized for the next render.
-<br />
-                    One common use case for useMemo is to optimize expensive calculations or data transformations in a component. By memoizing the result of the calculation, we can avoid unnecessary recalculations when the component re-renders due to changes in other state or props.
+                <span className='text-lg font-semibold bg-red-200 drop-shadow-md p-2 my-6 rounded-lg text-orange-900'>Q-4: What is a custom hook, and why will you create a custom hook?</span>
+                <div className='my-4 sm:mx-auto md:mx-0 rounded-lg p-4 bg-slate-700 text-white'>
+                    A custom hook in React is a JavaScript function that uses built-in hooks (like useState, useEffect, useContext, etc.) to provide a reusable functionality that can be shared across multiple components in an application.
+                    <br />
+                    Some common use cases for creating a custom hook include:
+                    <br />
+                    <ul className='list-disc pl-4 py-2'>
+                        <li>Reusing complex state logic across multiple components: For example, you might create a custom hook to manage complex form state and validation logic, which can be reused across multiple forms in your application.</li>
+                        <li>Abstracting network requests and caching: You might create a custom hook that abstracts away the details of making API calls and caching responses, which can be reused across multiple components that require data from the same API endpoint.</li>
+                        <li>Simplifying common tasks: You might create a custom hook that simplifies common tasks, such as managing a user's authentication state or handling keyboard shortcuts.</li>
+                    </ul>
+                    Overall, custom hooks are a powerful tool that can help you write cleaner and more maintainable code by abstracting away complex logic into a reusable piece of code that can be shared across multiple components in your application.
                 </div>
             </div>
         </div>
