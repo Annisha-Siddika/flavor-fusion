@@ -1,9 +1,48 @@
 import React from 'react';
+import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { FaFilePdf } from 'react-icons/fa';
+
+const styles = StyleSheet.create({
+    page: { backgroundColor: '#fff' },
+    header: { textAlign: 'center', fontSize: 24, margin: 30 },
+    post: { margin: 30 },
+    title: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
+    author: { fontSize: 12, marginBottom: 10 },
+    content: { fontSize: 14, lineHeight: 1.5 }
+});
+
+const blogPost = {
+    title: 'My First Blog Post',
+    author: 'Annisha Siddika',
+    content: 'Here we will know some important Questions answers for job interview -> Q-1: What is the differences between uncontrolled and controlled components? Q-2: How to validate React props using PropTypes? Q-3: What is the difference between nodejs and express js? Q-4: What is a custom hook, and why will you create a custom hook? The answers of these questions can be found on my websites Blog page'
+
+};
+
+const MyDoc = () => (
+    <Document>
+        <Page size="A4" style={styles.page}>
+            <View style={styles.header}>
+                <Text>My Blog</Text>
+            </View>
+            <View style={styles.post}>
+                <Text style={styles.title}>{blogPost.title}</Text>
+                <Text style={styles.author}>{blogPost.author}</Text>
+                <Text style={styles.content}>{blogPost.content}</Text>
+            </View>
+        </Page>
+    </Document>
+);
 
 const Blog = () => {
+
     return (
         <div className='pt-4 bg-slate-600 pb-20'>
-            <h1 className='text-2xl text-orange-300 font-bold text-center underline decoration-orange-500 decoration-2 underline-offset-4 mb-14 pt-20'>Questions and Answers</h1>
+            <h1 className='text-2xl text-orange-300 font-bold text-center underline decoration-orange-500 decoration-2 underline-offset-4 mb-8 pt-20'>Questions and Answers </h1>
+            <div className='w-44 mx-auto'>
+            <PDFDownloadLink document={<MyDoc />} fileName="blog.pdf">
+                    <button className='bg-orange-500 text-lg font-semibold px-4 py-1 rounded-md text-white hover:bg-orange-600 flex items-center my-8'><FaFilePdf></FaFilePdf> Download PDF</button>
+                </PDFDownloadLink>
+            </div>
             <div className='mx-24'>
                 <span className='text-lg font-semibold bg-red-200 drop-shadow-md p-2 my-6 rounded-lg text-orange-900'>Q-1: What is the differences between uncontrolled and controlled components?</span>
                 <div className='my-4 sm:mx-auto md:mx-0 rounded-lg p-4 bg-slate-700 text-white'>In React, a controlled component is a component that is controlled by React state, while an uncontrolled component is a component that maintains its own internal state.

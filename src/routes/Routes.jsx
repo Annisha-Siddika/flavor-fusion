@@ -9,6 +9,7 @@ import PrivateRoutes from './PrivateRoutes';
 import ErrorPage from '../ErrorPage';
 import Blog from '../pages/Blog/Blog';
 
+
 const Routes = createBrowserRouter([
 {
     path: '/',

@@ -1,6 +1,6 @@
 import React from 'react';
 import banner from '../../../assets/banner.jpg';
-import logo from '/public/fusion-logos_transparent.png'
+import logo from '/fusion-logos_transparent.png'
 import { TypeAnimation } from 'react-type-animation';
 const Banner = () => {
     return (
