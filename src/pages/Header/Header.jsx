@@ -27,7 +27,7 @@ const Header = () => {
         <Link to='/blog'>Blog</Link>
       </ul>
     </div>
-    <img className='w-36 h-36' src={logo}  />
+    <Link to='/'><img className='w-36 h-36' src={logo}  /></Link>
   </div>
   <div className="navbar-end">
   <ul className="menu menu-horizontal px-1 text-orange-500 font-bold text-xl flex gap-12 items-center">
